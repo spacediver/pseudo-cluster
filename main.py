@@ -1,5 +1,6 @@
 import imp
 import os 
+import importlib
 
 MODULE_EXTENSIONS = ('.py', '.pyc', '.pyo')
 
@@ -17,4 +18,5 @@ s = package_contents('package')
 for m in s:
     if m != '__init__':
         print 'importing ' + m
-        __import__('package.' + m)
+        mod = importlib.import_module('package.' + m)
+        print mod.useful
